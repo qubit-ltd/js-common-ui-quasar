@@ -6,12 +6,12 @@
 //    All rights reserved.
 //
 ////////////////////////////////////////////////////////////////////////////////
-import { mount } from '@vue/test-utils';
+// mount is imported but not used in this test file
 import { IconSet, Notify, Loading } from 'quasar';
 import { notify, loading } from '@qubit-ltd/common-ui';
 import { QuasarNotifyImpl, QuasarLoadingImpl } from '../src';
 import getQuasarIcon from '../src/impl/get-quasar-icon';
-import getQuasarColor from '../src/impl/get-quasar-color';
+// getQuasarColor is imported but not used in this test file
 
 // 模拟 getQuasarIcon 函数
 jest.mock('../src/impl/get-quasar-icon', () => jest.fn((type) => {
