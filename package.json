@@ -1,6 +1,6 @@
 {
   "name": "@qubit-ltd/common-ui-quasar",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "The implementation of common UI components with the Quasar Framework",
   "author": "Haixing Hu (starfish.hu@gmail.com)",
   "license": "Apache-2.0",
@@ -45,7 +45,7 @@
   },
   "peerDependencies": {
     "@babel/runtime": "^7.26.0",
-    "@qubit-ltd/common-ui": "^1.14.2",
+    "@qubit-ltd/common-ui": "^1.15.0",
     "quasar": "^2.17.6",
     "vue": "^3.5.13"
   },
@@ -56,9 +56,9 @@
     "@babel/preset-env": "^7.27.2",
     "@babel/runtime": "^7.27.1",
     "@jest/core": "^29.7.0",
-    "@qubit-ltd/common-ui": "^1.14.2",
+    "@qubit-ltd/common-ui": "^1.15.0",
     "@qubit-ltd/eslint-config": "^1.3.5",
-    "@qubit-ltd/jsdoc-minami": "^1.5.3",
+    "@qubit-ltd/jsdoc-theme": "^1.0.0",
     "@qubit-ltd/logging": "^1.4.9",
     "@qubit-ltd/rollup-builder": "^1.8.10",
     "@rollup/plugin-alias": "^5.1.1",
