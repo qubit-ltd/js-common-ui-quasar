@@ -52,8 +52,9 @@ class QuasarConfirmImpl extends ConfirmImpl {
    *     `catch`继续下一步操作。如果此对象被禁用，则返回一个`rejected`状态的`Promise`对象。
    */
   show(type, title, message, okLabel, cancelLabel) {
-    // 根据options中的类别，显示不同的图标和风格
-    const icon = getHtmlIcon(type);
+    // 获取自定义图标配置，如果没有配置则使用默认逻辑
+    const customIconClass = this.getCustomIcon(type);
+    const icon = getHtmlIcon(type, customIconClass);
     return new Promise((resolve, reject) => {
       this.Dialog.create({
         title: `${icon} ${title}`,

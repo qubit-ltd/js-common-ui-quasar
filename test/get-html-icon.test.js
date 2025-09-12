@@ -6,7 +6,7 @@
 //    All rights reserved.
 //
 ////////////////////////////////////////////////////////////////////////////////
-import { IconSet } from 'quasar';
+// IconSet is imported but not used in this test file
 import getHtmlIcon from '../src/impl/get-html-icon';
 import getIconSetName from '../src/get-quasar-icon-set';
 
@@ -97,5 +97,58 @@ describe('getHtmlIcon', () => {
     const icon = getHtmlIcon('success');
     const expectedStyle = "font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48; font-size: 1.5em; color: #21BA45;";
     expect(icon).toBe(`<i class="material-symbols-rounded" style="${expectedStyle}">check_circle</i>`);
+  });
+
+  it('should use custom icon class when provided', () => {
+    getIconSetName.mockReturnValue('fontawesome');
+
+    const customIconClass = 'fa-solid fa-custom-icon';
+    const icon = getHtmlIcon('info', customIconClass);
+
+    expect(icon).toBe('<i class="fa-solid fa-custom-icon" style="font-size: 1.5em; color: #1976D2;"></i>');
+  });
+
+  it('should use custom icon class regardless of icon set', () => {
+    getIconSetName.mockReturnValue('material');
+
+    const customIconClass = 'custom-warning-icon';
+    const icon = getHtmlIcon('warn', customIconClass);
+
+    expect(icon).toBe('<i class="custom-warning-icon" style="font-size: 1.5em; color: #FF9800;"></i>');
+  });
+
+  it('should handle null custom icon class', () => {
+    getIconSetName.mockReturnValue('bootstrap');
+
+    const icon = getHtmlIcon('error', null);
+
+    expect(icon).toBe('<i class="bi bi-x-circle-fill" style="font-size: 1.5em; color: #C10015;"></i>');
+  });
+
+  it('should handle undefined custom icon class', () => {
+    getIconSetName.mockReturnValue('fontawesome');
+
+    const icon = getHtmlIcon('success', undefined);
+
+    expect(icon).toBe('<i class="fa-solid fa-circle-check" style="font-size: 1.5em; color: #21BA45;"></i>');
+  });
+
+  it('should handle empty string custom icon class', () => {
+    getIconSetName.mockReturnValue('material');
+
+    const icon = getHtmlIcon('debug', '');
+
+    const expectedStyle = "font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48; font-size: 1.5em; color: #616161;";
+    expect(icon).toBe(`<i class="material-symbols-rounded" style="${expectedStyle}">help</i>`);
+  });
+
+  it('should apply correct colors for different message types with custom icons', () => {
+    const customIconClass = 'custom-icon';
+
+    expect(getHtmlIcon('info', customIconClass)).toContain('color: #1976D2;');
+    expect(getHtmlIcon('warn', customIconClass)).toContain('color: #FF9800;');
+    expect(getHtmlIcon('error', customIconClass)).toContain('color: #C10015;');
+    expect(getHtmlIcon('success', customIconClass)).toContain('color: #21BA45;');
+    expect(getHtmlIcon('debug', customIconClass)).toContain('color: #616161;');
   });
 });

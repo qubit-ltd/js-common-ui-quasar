@@ -19,12 +19,19 @@ import getIconSetName from '../get-quasar-icon-set';
  *
  * @param {string} type
  *     对话框类型。
+ * @param {string|null} customIconClass
+ *     可选的自定义图标CSS类名，如果提供则直接使用，否则使用默认逻辑。
  * @return {string}
  *     对应的图标，以 HTML 代码形式表示。
  */
-function getHtmlIcon(type) {
-  const iconSet = getIconSetName();
+function getHtmlIcon(type, customIconClass = null) {
   const color = getCssColor(type);
+  // 如果提供了自定义图标CSS类，直接使用
+  if (customIconClass) {
+    return `<i class="${customIconClass}" style="font-size: 1.5em; color: ${color};"></i>`;
+  }
+  // 否则使用原有的自动选择逻辑
+  const iconSet = getIconSetName();
   const baseMaterialStyle = "font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48";
   switch (iconSet) {
     case 'fontawesome':
