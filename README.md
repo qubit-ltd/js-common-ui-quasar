@@ -45,6 +45,104 @@ This library depends on the following packages:
 
 Ensure these dependencies are correctly installed in your project.
 
+## Custom Icon Configuration
+
+Starting from v1.1.0, `@qubit-ltd/common-ui-quasar` supports custom icon configuration. You can configure custom icon CSS class names for different message types.
+
+### Basic Configuration
+
+```javascript
+import { alert, confirm, notify } from '@qubit-ltd/common-ui';
+import { QuasarAlertImpl, QuasarConfirmImpl, QuasarNotifyImpl } from '@qubit-ltd/common-ui-quasar';
+import { Dialog, Notify } from 'quasar';
+
+// Configure custom icons
+const iconConfig = {
+  iconClassMap: {
+    'info': 'fa-solid fa-info-circle',
+    'success': 'fa-solid fa-check-circle',
+    'warn': 'fa-solid fa-exclamation-triangle',
+    'error': 'fa-solid fa-times-circle',
+    'debug': 'fa-solid fa-bug'
+  }
+};
+
+// Pass configuration when setting implementation
+alert.setImpl(new QuasarAlertImpl(Dialog), iconConfig);
+confirm.setImpl(new QuasarConfirmImpl(Dialog), iconConfig);
+notify.setImpl(new QuasarNotifyImpl(Notify), iconConfig);
+```
+
+### Partial Custom Configuration
+
+You only need to configure the icon types you want to customize, other types will use default icons:
+
+```javascript
+// Only customize error and success icons
+const partialConfig = {
+  iconClassMap: {
+    'error': 'fa-solid fa-skull-crossbones',
+    'success': 'fa-solid fa-thumbs-up'
+  }
+};
+
+alert.setImpl(new QuasarAlertImpl(Dialog), partialConfig);
+```
+
+### Supported Icon Libraries
+
+You can use any CSS icon library:
+
+```javascript
+// FontAwesome icons
+const fontAwesomeConfig = {
+  iconClassMap: {
+    'info': 'fa-solid fa-circle-info',
+    'error': 'fa-solid fa-circle-xmark'
+  }
+};
+
+// Bootstrap Icons
+const bootstrapConfig = {
+  iconClassMap: {
+    'info': 'bi bi-info-circle-fill',
+    'error': 'bi bi-x-circle-fill'
+  }
+};
+
+// Material Icons
+const materialConfig = {
+  iconClassMap: {
+    'info': 'material-icons',
+    'error': 'material-icons'
+  }
+};
+```
+
+### Backward Compatibility
+
+When no configuration is provided, the original behavior is maintained:
+
+```javascript
+// Original way, using default icons
+alert.setImpl(new QuasarAlertImpl(Dialog));
+```
+
+### Runtime Configuration Updates
+
+You can also update configuration at runtime:
+
+```javascript
+// Get current implementation and update configuration
+const impl = alert.getImpl();
+impl.configure({
+  iconClassMap: {
+    'info': 'new-info-icon',
+    'error': 'new-error-icon'
+  }
+});
+```
+
 ## Usage
 
 ### Basic Setup
@@ -53,8 +151,8 @@ First, import and set up the implementations in your application:
 
 ```javascript
 import { notify, loading, confirm, alert } from '@qubit-ltd/common-ui';
-import { 
-  QuasarNotifyImpl, 
+import {
+  QuasarNotifyImpl,
   QuasarLoadingImpl,
   QuasarConfirmImpl,
   QuasarAlertImpl
@@ -78,14 +176,14 @@ notify.info('This is an information message');
 notify.success('Operation completed successfully');
 
 // Show a warning notification
-notify.warn('Please note', { 
-  position: 'top-right', 
+notify.warn('Please note', {
+  position: 'top-right',
   duration: 5000,
-  closeable: true 
+  closeable: true
 });
 
 // Show an error notification
-notify.error('An error occurred', { 
+notify.error('An error occurred', {
   icon: 'error',
   showDetail: true,
   detailLabel: 'View Details',
@@ -122,8 +220,8 @@ confirm.show('Confirm Deletion?', 'Are you sure you want to delete this item?')
 
 // Custom confirmation dialog
 confirm.show(
-  'Save Changes', 
-  'Do you want to save your changes?', 
+  'Save Changes',
+  'Do you want to save your changes?',
   {
     ok: 'Save',
     cancel: 'Don\'t Save',
@@ -141,7 +239,7 @@ confirm.show(
 alert.show('Operation Complete', 'Your operation has completed successfully');
 
 // Alert with callback
-alert.show('Notice', 'Your session is about to expire', { 
+alert.show('Notice', 'Your session is about to expire', {
   ok: 'Got it',
   callback: () => console.log('User acknowledged')
 });

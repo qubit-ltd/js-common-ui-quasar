@@ -44,6 +44,104 @@ yarn add @qubit-ltd/common-ui-quasar
 
 确保这些依赖已正确安装在您的项目中。
 
+## 自定义图标配置
+
+从 v1.1.0 开始，`@qubit-ltd/common-ui-quasar` 支持自定义图标配置功能。您可以为不同的消息类型配置自定义的图标CSS类名。
+
+### 基本配置
+
+```javascript
+import { alert, confirm, notify } from '@qubit-ltd/common-ui';
+import { QuasarAlertImpl, QuasarConfirmImpl, QuasarNotifyImpl } from '@qubit-ltd/common-ui-quasar';
+import { Dialog, Notify } from 'quasar';
+
+// 配置自定义图标
+const iconConfig = {
+  iconClassMap: {
+    'info': 'fa-solid fa-info-circle',
+    'success': 'fa-solid fa-check-circle',
+    'warn': 'fa-solid fa-exclamation-triangle',
+    'error': 'fa-solid fa-times-circle',
+    'debug': 'fa-solid fa-bug'
+  }
+};
+
+// 在设置实现时传入配置
+alert.setImpl(new QuasarAlertImpl(Dialog), iconConfig);
+confirm.setImpl(new QuasarConfirmImpl(Dialog), iconConfig);
+notify.setImpl(new QuasarNotifyImpl(Notify), iconConfig);
+```
+
+### 部分自定义配置
+
+您只需要配置想要自定义的图标类型，其他类型将使用默认图标：
+
+```javascript
+// 只自定义错误和成功图标
+const partialConfig = {
+  iconClassMap: {
+    'error': 'fa-solid fa-skull-crossbones',
+    'success': 'fa-solid fa-thumbs-up'
+  }
+};
+
+alert.setImpl(new QuasarAlertImpl(Dialog), partialConfig);
+```
+
+### 支持的图标库
+
+您可以使用任何CSS图标库：
+
+```javascript
+// FontAwesome 图标
+const fontAwesomeConfig = {
+  iconClassMap: {
+    'info': 'fa-solid fa-circle-info',
+    'error': 'fa-solid fa-circle-xmark'
+  }
+};
+
+// Bootstrap Icons
+const bootstrapConfig = {
+  iconClassMap: {
+    'info': 'bi bi-info-circle-fill',
+    'error': 'bi bi-x-circle-fill'
+  }
+};
+
+// Material Icons
+const materialConfig = {
+  iconClassMap: {
+    'info': 'material-icons',
+    'error': 'material-icons'
+  }
+};
+```
+
+### 向后兼容
+
+不提供配置时，完全保持原有行为：
+
+```javascript
+// 原有方式，使用默认图标
+alert.setImpl(new QuasarAlertImpl(Dialog));
+```
+
+### 运行时配置更新
+
+您也可以在运行时更新配置：
+
+```javascript
+// 获取当前实现并更新配置
+const impl = alert.getImpl();
+impl.configure({
+  iconClassMap: {
+    'info': 'new-info-icon',
+    'error': 'new-error-icon'
+  }
+});
+```
+
 ## 使用方法
 
 ### 基本用法
@@ -52,8 +150,8 @@ yarn add @qubit-ltd/common-ui-quasar
 
 ```javascript
 import { notify, loading, confirm, alert } from '@qubit-ltd/common-ui';
-import { 
-  QuasarNotifyImpl, 
+import {
+  QuasarNotifyImpl,
   QuasarLoadingImpl,
   QuasarConfirmImpl,
   QuasarAlertImpl
@@ -77,14 +175,14 @@ notify.info('这是一条信息');
 notify.success('操作成功完成');
 
 // 显示警告通知
-notify.warn('请注意', { 
-  position: 'top-right', 
+notify.warn('请注意', {
+  position: 'top-right',
   duration: 5000,
-  closeable: true 
+  closeable: true
 });
 
 // 显示错误通知
-notify.error('发生错误', { 
+notify.error('发生错误', {
   icon: 'error',
   showDetail: true,
   detailLabel: '查看详情',
@@ -121,8 +219,8 @@ confirm.show('确认删除?', '您确定要删除这个项目吗?')
 
 // 自定义确认对话框
 confirm.show(
-  '保存更改', 
-  '是否保存所做的更改?', 
+  '保存更改',
+  '是否保存所做的更改?',
   {
     ok: '保存',
     cancel: '不保存',
@@ -140,7 +238,7 @@ confirm.show(
 alert.show('操作完成', '您的操作已成功完成');
 
 // 带回调的提示框
-alert.show('注意', '会话即将过期', { 
+alert.show('注意', '会话即将过期', {
   ok: '知道了',
   callback: () => console.log('用户已知晓')
 });
@@ -226,4 +324,4 @@ yarn lint
 
 [@qubit-ltd/common-ui-quasar]: https://npmjs.com/package/@qubit-ltd/common-ui-quasar
 [@qubit-ltd/common-ui]: https://npmjs.com/package/@qubit-ltd/common-ui
-[GitHub repository]: https://github.com/Haixing-Hu/js-common-ui-quasar 
+[GitHub repository]: https://github.com/Haixing-Hu/js-common-ui-quasar
