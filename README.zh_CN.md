@@ -2,8 +2,8 @@
 
 [![npm package](https://img.shields.io/npm/v/@qubit-ltd/common-ui-quasar.svg)](https://npmjs.com/package/@qubit-ltd/common-ui-quasar)
 [![License](https://img.shields.io/badge/License-Apache-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Haixing-Hu/js-common-ui-quasar/tree/master.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/Haixing-Hu/js-common-ui-quasar/tree/master)
-[![Coverage Status](https://coveralls.io/repos/github/Haixing-Hu/js-common-ui-quasar/badge.svg?branch=master)](https://coveralls.io/github/Haixing-Hu/js-common-ui-quasar?branch=master)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/qubit-ltd/js-common-ui-quasar/tree/master.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/qubit-ltd/js-common-ui-quasar/tree/master)
+[![Coverage Status](https://coveralls.io/repos/github/qubit-ltd/js-common-ui-quasar/badge.svg?branch=master)](https://coveralls.io/github/qubit-ltd/js-common-ui-quasar?branch=master)
 
 ## 简介
 
@@ -324,4 +324,4 @@ yarn lint
 
 [@qubit-ltd/common-ui-quasar]: https://npmjs.com/package/@qubit-ltd/common-ui-quasar
 [@qubit-ltd/common-ui]: https://npmjs.com/package/@qubit-ltd/common-ui
-[GitHub repository]: https://github.com/Haixing-Hu/js-common-ui-quasar
+[GitHub repository]: https://github.com/qubit-ltd/js-common-ui-quasar

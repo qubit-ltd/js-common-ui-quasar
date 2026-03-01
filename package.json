@@ -1,17 +1,17 @@
 {
   "name": "@qubit-ltd/common-ui-quasar",
-  "version": "1.1.1",
+  "version": "1.1.3",
   "description": "The implementation of common UI components with the Quasar Framework",
   "author": "Haixing Hu (starfish.hu@gmail.com)",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Haixing-Hu/common-ui-quasar.git"
+    "url": "git+https://github.com/qubit-ltd/common-ui-quasar.git"
   },
   "bugs": {
-    "url": "https://github.com/Haixing-Hu/common-ui-quasar/issues"
+    "url": "https://github.com/qubit-ltd/common-ui-quasar/issues"
   },
-  "homepage": "https://github.com/Haixing-Hu/common-ui-quasar",
+  "homepage": "https://github.com/qubit-ltd/common-ui-quasar",
   "keywords": [
     "JavaScript",
     "component",
@@ -39,33 +39,31 @@
     "lint": "eslint ./src ./test",
     "doc": "jsdoc -c jsdoc.json",
     "es5": "check-es-version -e 5 -s true",
-    "deploy": "yarn && yarn lint && yarn test && yarn build:all && npm publish --registry='https://npm.qubit.ltd/' --access public",
-    "deploy:public": "npm run lint && npm run test && npm run build:all && npm publish --registry='https://registry.npmjs.org/' --access public",
-    "deploy:all": "npm run deploy && npm publish --registry='https://registry.npmjs.org/' --access public"
+    "deploy": "npm run lint && npm run test && npm run build:all && npm publish --registry='https://registry.npmjs.org/' --access public"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.28.4",
-    "@qubit-ltd/common-ui": "^1.15.2",
+    "@qubit-ltd/common-ui": "^1.15.3",
     "quasar": "^2.18.2",
     "vue": "^3.5.21"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.4",
+    "@babel/core": "^7.29.0",
     "@babel/eslint-parser": "^7.28.4",
-    "@babel/plugin-transform-runtime": "^7.28.3",
-    "@babel/preset-env": "^7.28.3",
+    "@babel/plugin-transform-runtime": "^7.29.0",
+    "@babel/preset-env": "^7.29.0",
     "@babel/runtime": "^7.28.4",
     "@jest/core": "^30.1.3",
-    "@qubit-ltd/common-ui": "^1.15.2",
-    "@qubit-ltd/eslint-config": "^2.0.0",
-    "@qubit-ltd/jsdoc-theme": "^1.5.1",
-    "@qubit-ltd/logging": "^1.4.12",
-    "@qubit-ltd/rollup-builder": "^1.8.12",
-    "@rollup/plugin-alias": "^5.1.1",
-    "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-commonjs": "^28.0.6",
+    "@qubit-ltd/common-ui": "^1.15.3",
+    "@qubit-ltd/eslint-config": "^2.0.1",
+    "@qubit-ltd/jsdoc-theme": "^1.5.2",
+    "@qubit-ltd/logging": "^1.4.15",
+    "@qubit-ltd/rollup-builder": "^1.8.14",
+    "@rollup/plugin-alias": "^6.0.0",
+    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@vue/babel-preset-jsx": "^1.4.0",
     "@vue/compiler-dom": "^3.5.21",
@@ -88,9 +86,9 @@
     "jest-serializer-vue": "^3.1.0",
     "jsdoc": "^4.0.4",
     "quasar": "^2.18.2",
-    "rollup": "^4.50.1",
+    "rollup": "^4.59.0",
     "rollup-plugin-analyzer": "^4.0.0",
-    "rollup-plugin-visualizer": "^6.0.3",
+    "rollup-plugin-visualizer": "^6.0.5",
     "typescript": "^5.9.2",
     "vue": "^3.5.21",
     "vue-eslint-parser": "^10.2.0"
